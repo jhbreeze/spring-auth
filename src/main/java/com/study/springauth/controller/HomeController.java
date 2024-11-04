@@ -4,11 +4,20 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import com.study.springauth.dto.SignupRequestDto;
 import com.study.springauth.security.UserDetailsImpl;
+import com.study.springauth.service.UserService;
 
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Controller
 public class HomeController {
+
+	private final UserService userService;
 
 	@GetMapping("/")
 	public String home(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
@@ -16,5 +25,12 @@ public class HomeController {
 		model.addAttribute("username", userDetails.getUser().getUsername());
 
 		return "index";
+	}
+
+	@PostMapping("/user/signup")
+	public String signup(@Valid SignupRequestDto requestDto) {
+		userService.signup(requestDto);
+
+		return "redirect:/api/user/login-page";
 	}
 }
