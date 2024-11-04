@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j(topic = "LoggingFilter")
-@Component
+//@Component
 @Order(1) // 체인 형식의 필터 순서 지정
 public class LoggingFilter implements Filter {
 

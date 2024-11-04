@@ -2,6 +2,7 @@ package com.study.springauth.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -13,7 +14,7 @@ public class UserController {
 		return "login";
 	}
 
-	@GetMapping("/user/signup")
+	@PostMapping("/user/signup")
 	public String signupPage() {
 		return "signup";
 	}
