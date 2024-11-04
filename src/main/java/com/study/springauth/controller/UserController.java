@@ -29,7 +29,7 @@ public class UserController {
 		return "login";
 	}
 
-	@PostMapping("/user/signup")
+	@GetMapping("/user/signup")
 	public String signupPage() {
 		return "signup";
 	}
